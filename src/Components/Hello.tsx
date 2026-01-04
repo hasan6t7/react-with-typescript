@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 
 type Info = {
   name: string;
@@ -16,6 +16,7 @@ type User = {
 const Hello = ({ userInfo }: HelloProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [count, setCount] = useState<number>(0);
+  const [inputValue, setInputValue] = useState<string>("");
 
   useEffect((): void => {
     const fetchData = async () => {
@@ -27,6 +28,10 @@ const Hello = ({ userInfo }: HelloProps) => {
     };
     fetchData();
   }, []);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
   return (
     <div>
       <div>{`Hello ${userInfo.name}. You are ${userInfo.age} Years Old `}</div>
@@ -40,6 +45,16 @@ const Hello = ({ userInfo }: HelloProps) => {
       <div>{count}</div>
       <div>
         <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>
+      </div>
+
+      <div>
+        <input
+          type="text"
+          name=""
+          id=""
+          onChange={handleInputChange}
+          value={inputValue}
+        />
       </div>
     </div>
   );
