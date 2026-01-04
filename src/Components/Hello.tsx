@@ -15,8 +15,9 @@ type User = {
 
 const Hello = ({ userInfo }: HelloProps) => {
   const [user, setUser] = useState<User | null>(null);
+  const [count, setCount] = useState<number>(0);
 
-  useEffect(():void => {
+  useEffect((): void => {
     const fetchData = async () => {
       const data: User = {
         name: "Hasan",
@@ -35,6 +36,10 @@ const Hello = ({ userInfo }: HelloProps) => {
             Name : {user.name} - Email: {user.email}
           </div>
         )}
+      </div>
+      <div>{count}</div>
+      <div>
+        <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>
       </div>
     </div>
   );
