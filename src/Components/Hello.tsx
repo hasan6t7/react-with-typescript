@@ -1,4 +1,4 @@
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 
 type Info = {
   name: string;
@@ -17,6 +17,7 @@ const Hello = ({ userInfo }: HelloProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [count, setCount] = useState<number>(0);
   const [inputValue, setInputValue] = useState<string>("");
+  const inputRef = useRef<null>(null);
 
   useEffect((): void => {
     const fetchData = async () => {
@@ -49,6 +50,7 @@ const Hello = ({ userInfo }: HelloProps) => {
 
       <div>
         <input
+          ref={inputRef}
           type="text"
           name=""
           id=""
