@@ -13,8 +13,10 @@ function App() {
 
   return (
     <>
-      <h1>React With Typescript</h1>
+      <div className="h-screen flex flex-col items-center justify-center space-y-4">
+        <h1>React With Typescript</h1>
       <Hello userInfo={userInfo} />
+      </div>
     </>
   );
 }
